@@ -28,7 +28,7 @@ def trace_integration():
     for name in SERVICECLIENT_WRAP_METHODS:
         # Wrap msrest.ServiceClient class
         wrapt.wrap_function_wrapper(
-            MODULE_NAME, '[msrest]ServiceClient.{}'.format(name), wrap_serviceclient_request)
+            MODULE_NAME, 'ServiceClient.{}'.format(name), wrap_serviceclient_request)
 
     for name in PAGED_WRAP_METHODS:
         # Wrap msrest.Pagedclass
