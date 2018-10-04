@@ -2,13 +2,12 @@ Simple example on how to instrument azure libraries using [opencensus](https://o
 
 Example:
 ```
-from oc_azure.msrest.trace import trace_integration
-from opencensus.trace import tracer as tracer_module
+from opencensus.trace import tracer as tracer_module, config_integration
 
 
 # Initialize a tracer, by default using the `PrintExporter`
-trace_integration()
 tracer = tracer_module.Tracer()
+config_integration.trace_configurations(['azure.msrest', 'azure.storage'], tracer=tracer)
 tracer.span(name='main')
 
 # Do stuff
